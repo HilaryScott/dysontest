@@ -14,19 +14,19 @@ var courses = {
     method: 'GET',
     render: function (req, res) {
        var result = lodash.slice(csvData, 0, 2);
-       var cellRow = "";
+       var cellHeaderRow = result[0];
+       var cellRowContent = 1;
+       var secondaryCell = 0;
+       var compiledInfo = "";
+
+       for(var i=0; i<cellHeaderRow.length; i++){
+       	compiledInfo += cellHeaderRow[i] + " : " + result[cellRowContent][secondaryCell] + "\n";
+       	secondaryCell++;
+       }
 
 
-       for (var e = 0; e<result.length; e++){
-       	var rowNum = e;
+        res.send(compiledInfo);
 
-        for (var i=0; i < result[rowNum].length; i++) {
-        	cellRow += result[rowNum][i] + "\n"+ result[rowNum][i] ;
-        }
-		}
-        res.send(cellRow);
-        // var resultCell = result[0][1];
-        //  res.send(resultCell);
     }
 };
 
