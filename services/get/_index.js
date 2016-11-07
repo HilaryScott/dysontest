@@ -5,6 +5,8 @@ module.exports = {
 		var html = '<h1>dyson</h1><p>Example endpoints:</p>';
 
 		var examples = [
+			'/catalog',
+			'/articles',
 			'/user',
 			'/users',
 			'/employee/5',
@@ -22,6 +24,6 @@ module.exports = {
 			return '<li><a href="' + example + '">' + example + '</a></li>';
 		}).join('') + '</ul>';
 
-		res.send(200, html);
+		res.status(200).send(html);
 	}
 };
